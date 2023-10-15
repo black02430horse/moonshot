@@ -6,6 +6,7 @@ import { ButtonComponent, InputComponent } from "../../../common";
 import { Logo } from "../../../../assets/logo";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { BlogPng } from "../../../../assets/image";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export const HeaderView: React.FC = () => {
   return (
@@ -16,12 +17,14 @@ export const HeaderView: React.FC = () => {
           <Typography className="font-size-16 font-inter alert-title header-text1">
             We’ve just launched a new feature!
           </Typography>
-          <Typography className="header-text2 font-size-16 font-inter alert-title">
-            Checkout the
-          </Typography>
-          <Typography className="header-text2 font-size-16 font-inter alert-title text-decoration-underline">
-            new dashboard.
-          </Typography>
+          <Box display={"flex"}>
+            <Typography className="header-text2 font-size-16 font-inter alert-title">
+              Checkout the
+            </Typography>
+            <Typography className="header-text2 font-size-16 font-inter alert-title text-decoration-underline">
+              new dashboard.
+            </Typography>
+          </Box>
         </Box>
         <Box className="header-icon">
           <CloseIcon />
@@ -33,15 +36,18 @@ export const HeaderView: React.FC = () => {
             <img src={Logo} width={"50px"} />
             <Typography className="header-logo">Untitled UI</Typography>
           </Box>
-          <ButtonComponent content="Home" />
-          <ButtonComponent content="Products" icon={<ArrowDropDownIcon />} />
-          <ButtonComponent content="Resources" icon={<ArrowDropDownIcon />} />
-          <ButtonComponent content="Pricing" />
+          <Box className="btn-group">
+            <ButtonComponent content="Home" />
+            <ButtonComponent content="Products" icon={<ArrowDropDownIcon />} />
+            <ButtonComponent content="Resources" icon={<ArrowDropDownIcon />} />
+            <ButtonComponent content="Pricing" />
+          </Box>
         </Box>
-        <Box display={"flex"}>
+        <Box className="auth-btn">
           <ButtonComponent content="Log in" />
           <ButtonComponent content="Sign up" type={true} />
         </Box>
+        <MenuIcon className="menu-btn" />
       </Box>
       <Box className="blog-container">
         <Typography className="font-size-16 color-secondary font-regular">
@@ -53,7 +59,7 @@ export const HeaderView: React.FC = () => {
         <Typography className="font-size-16 color-grey font-inter ">
           The latest industry news, interviews, technologies, and resources.
         </Typography>
-        <Box display={"flex"} gap={"12px"}>
+        <Box className="email-btn">
           <InputComponent
             placeholder="Enter your email"
             helper="We care about your data in our privacy policy."

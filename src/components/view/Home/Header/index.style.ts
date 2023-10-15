@@ -42,7 +42,19 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
         '.header-menu': {
           display: "flex",
           justifyContent: "space-between",
-          padding: "18px 96px",
+          padding: "18px 5%",
+          
+          '.auth-btn': {
+            display: "flex"
+          },
+          
+          '.menu-btn': {
+            display: "none"
+          },
+
+          '.btn-group': {
+            display: "flex"
+          }
         },
         
         '.header-logo': {
@@ -55,16 +67,21 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
         },
 
         '.blog-container': {
-          padding: "96px",
+          padding: "5%",
           textAlign: "center",
           fontFamily: customTheme.fonts.mainFont,
           gap: "24px",
           display: "grid",
-          justifyContent: "center"
+          justifyContent: "center",
+          
+          '.email-btn': {
+            display: "flex",
+            gap: "12px"
+          },
         },
 
         '.review-container': {
-          padding: "24px 96px",
+          padding: "24px 5%",
           
           '.image-container': {
             borderRadius: "12px"
@@ -105,6 +122,36 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
 
         '.color-grey': {
           color: customTheme.fontColors.primary00
+        },
+
+        '@media(max-width: 900px)': {
+          '.header-alert': {
+            '.text-group': {
+              display: "grid",
+            },
+          },
+
+          '.header-menu': {
+            
+            '.auth-btn':{
+              display: "none"
+            },
+            
+            '.menu-btn':{
+              display: "block"
+            },
+
+            '.btn-group': {
+              display: "none"
+            }
+          },
+
+          '.blog-container': {
+            '.email-btn': {
+              display: "grid",
+              gap: "12px"
+            },
+          },
         }
         
     }
