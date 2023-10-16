@@ -12,7 +12,7 @@ export const LoginView: React.FC = () => {
     <Box display={"flex"} gap={"10px"} alignItems={"center"}>
       <img src={GoogleSvg} />
       <Typography className="font-poppin font-size-12">
-        Login with <strong>google</strong>
+        Sign in with <strong>google</strong>
       </Typography>
     </Box>
   );
@@ -21,7 +21,7 @@ export const LoginView: React.FC = () => {
     <Box display={"flex"} gap={"10px"} alignItems={"center"}>
       <img src={FacebookSvg} />
       <Typography className="font-poppin font-size-12">
-        Login with <strong>facebook</strong>
+        Sign in with <strong>facebook</strong>
       </Typography>
     </Box>
   );
@@ -49,7 +49,7 @@ export const LoginView: React.FC = () => {
               type="password"
             />
             <Box>
-              <ButtonComponent type={1} content="Login" />
+              <ButtonComponent type={1} content="Sign in" />
               <Box
                 display={"flex"}
                 gap="12px"
