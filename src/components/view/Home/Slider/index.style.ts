@@ -10,8 +10,28 @@ export const SliderViewStyle = styled('div')<SliderViewStyleProps>(
 
     const customTheme = theme as CustomTheme;
     return {
-        '.main-padding': {
-          padding: "0px 5%",
+        padding: "96px 5%",
+        bgColor: "#F9FAFB",
+        display: "grid",
+        gap: "64px",
+
+        '.header': {
+          display: "flex",
+          justifyContent: "space-between",
+
+          '.header-btn': {
+            display: "block",
+            [customTheme.breakpoints.down("sm")]: {
+              display: "none",
+            }
+          }
+        },
+
+        '.footer-btn': {
+          display: "none",
+          [customTheme.breakpoints.down("sm")]: {
+            display: "block",
+          }
         },
 
         '.font-inter': {
