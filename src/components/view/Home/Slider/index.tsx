@@ -2,6 +2,8 @@ import React from "react";
 import { SliderViewStyle } from "./index.style";
 import { Box, Stack, Typography } from "@mui/material";
 import { ButtonComponent } from "../../../common";
+import { SwiperComponent } from "../../../common/Swiper";
+import { BlogList } from "../../../../consts";
 
 export const SliderView: React.FC = () => {
   return (
@@ -19,7 +21,7 @@ export const SliderView: React.FC = () => {
           <ButtonComponent content="View all posts" type={true} />
         </Box>
       </Box>
-
+      <SwiperComponent slides={BlogList.slice(1, BlogList.length - 1)} />
       <Box className="footer-btn">
         <ButtonComponent content="View all posts" type={true} />
       </Box>

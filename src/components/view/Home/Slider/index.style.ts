@@ -12,12 +12,13 @@ export const SliderViewStyle = styled('div')<SliderViewStyleProps>(
     return {
         padding: "96px 5%",
         bgColor: "#F9FAFB",
-        display: "grid",
-        gap: "64px",
+        // display: "grid",
+        // gap: "64px",
 
         '.header': {
           display: "flex",
           justifyContent: "space-between",
+          marginBottom: "2rem",
 
           '.header-btn': {
             display: "block",
@@ -25,6 +26,13 @@ export const SliderViewStyle = styled('div')<SliderViewStyleProps>(
               display: "none",
             }
           }
+        },
+
+        '.card-array-container': {
+          width: '100%',
+          paddingTop: '0.5rem',
+          paddingBottom: '0.5rem',
+          display: 'flex',
         },
 
         '.footer-btn': {
