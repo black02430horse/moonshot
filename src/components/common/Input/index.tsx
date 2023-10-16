@@ -4,14 +4,17 @@ type InputComponentProps = BoxProps & {
   placeholder?: string;
   width?: number;
   helper?: string;
+  icon?: string;
+  type?: string;
 };
 
 export const InputComponent: React.FC<InputComponentProps> = (props) => {
-  const { placeholder, width, helper } = props;
+  const { placeholder, width, helper, icon, type } = props;
   return (
     <Box textAlign={"left"}>
       <InputComponentStyle width={width}>
-        <InputBase placeholder={placeholder} className="input" />
+        <img src={icon} className="icon-container" />
+        <InputBase placeholder={placeholder} className="input" type={type} />
       </InputComponentStyle>
       <Typography
         fontFamily={"Inter"}

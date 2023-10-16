@@ -12,8 +12,8 @@ export const InputComponentStyle = styled('div')<InputComponentStyleProps>(
     const customTheme = theme as CustomTheme;
     return {
       fontWeight: customTheme.fontWeights.regular,
-      fontSize: "16px",
-      padding: "6px 14px" ,
+      fontSize: "12px",
+      padding: "10px 14px" ,
       borderRadius: "8px",
       border: "1px solid #D0D5DD",
       fontFamily: "Inter",
@@ -23,6 +23,10 @@ export const InputComponentStyle = styled('div')<InputComponentStyleProps>(
       '.input': {
         fontFamily: "Inter",
         width: "100%"
+      },
+
+      '.icon-container': {
+        marginRight: "5px"
       },
 
       '.helper-text': {

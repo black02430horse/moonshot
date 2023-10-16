@@ -11,7 +11,7 @@ export const ButtonComponentStyle = styled('div')<ButtonComponentStyleProps>(
     return {
       fontWeight: customTheme.fontWeights.regular,
       fontSize: "16px",
-      padding: "12px 18px" ,
+      padding: "10px 18px" ,
       backgroundColor: type == 1 ? customTheme.colors.secondary10 : customTheme.colors.white,
       color: type == 1 ? customTheme.colors.white : customTheme.fontColors.primary00,
       border: type == 2 ? "1px solid #D0D5DD" : "none",
