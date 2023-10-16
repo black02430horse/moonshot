@@ -52,8 +52,14 @@ export const SwiperComponent: React.FC<SwiperComponentProps> = ({ slides }) => {
         ))}
       </Swiper>
       <Box className="btn-group">
-        <SlideButtonComponent icon={<ArrowBackIcon />} />
-        <SlideButtonComponent icon={<ArrowForwardIcon />} />
+        <SlideButtonComponent
+          icon={<ArrowBackIcon sx={{ color: "grey" }} />}
+          type={1}
+        />
+        <SlideButtonComponent
+          icon={<ArrowForwardIcon sx={{ color: "grey" }} />}
+          type={1}
+        />
       </Box>
     </SwiperComponentStyle>
   );

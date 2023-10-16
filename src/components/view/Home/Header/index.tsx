@@ -67,7 +67,7 @@ export const HeaderView: React.FC = () => {
           </Box>
           <Box className="auth-btn">
             <ButtonComponent content="Log in" />
-            <ButtonComponent content="Sign up" type={true} />
+            <ButtonComponent content="Sign up" type={1} />
           </Box>
           <MenuIcon className="menu-btn" />
         </Box>
@@ -86,7 +86,7 @@ export const HeaderView: React.FC = () => {
               placeholder="Enter your email"
               helper="We care about your data in our privacy policy."
             />
-            <ButtonComponent content="Get started" type={true} />
+            <ButtonComponent content="Get started" type={1} />
           </Box>
         </Box>
         <Box className="review-container">

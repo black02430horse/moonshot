@@ -18,12 +18,12 @@ export const SliderView: React.FC = () => {
           </Typography>
         </Stack>
         <Box className="header-btn">
-          <ButtonComponent content="View all posts" type={true} />
+          <ButtonComponent content="View all posts" type={1} />
         </Box>
       </Box>
       <SwiperComponent slides={BlogList.slice(1, BlogList.length - 1)} />
       <Box className="footer-btn">
-        <ButtonComponent content="View all posts" type={true} />
+        <ButtonComponent content="View all posts" type={1} />
       </Box>
     </SliderViewStyle>
   );
