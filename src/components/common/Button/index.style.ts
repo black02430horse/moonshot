@@ -21,7 +21,8 @@ export const ButtonComponentStyle = styled('div')<ButtonComponentStyleProps>(
       margin: "0.1rem",
       alignItems : "center",
       display: "flex",
-      height: "max-content"
+      height: "max-content",
+      justifyContent: "center"
     }
   }
 )
