@@ -1,7 +1,7 @@
 import { StyledComponentProps, styled } from '@mui/material';
 
 import { CustomTheme } from '../../../../style/types';
-import { BlogPng } from '../../../../assets/image';
+// import { Png1 } from '../../../../assets/image';
 
 type HeaderViewStyleProps = StyledComponentProps & {} ;
 
@@ -10,6 +10,10 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
 
     const customTheme = theme as CustomTheme;
     return {
+        '.main-padding': {
+          padding: "0px 5%",
+        },
+
         '.header-alert': {
           backgroundColor: customTheme.colors.secondary00,
           display: "flex",
@@ -25,6 +29,10 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
 
           '.text-group': {
             display: "flex",
+
+            [customTheme.breakpoints.down("md")]: {
+              display: "grid"
+            }
           },
 
           '.header-text1': {
@@ -42,18 +50,28 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
         '.header-menu': {
           display: "flex",
           justifyContent: "space-between",
-          padding: "18px 5%",
+          alignItems: "center",
+          padding: "18px 0",
           
           '.auth-btn': {
-            display: "flex"
+            display: "flex",
+            [customTheme.breakpoints.down("md")]: {
+              display: "none"
+            }
           },
           
           '.menu-btn': {
-            display: "none"
+            display: "none",
+            [customTheme.breakpoints.down("md")]: {
+              display: "block"
+            }
           },
 
           '.btn-group': {
-            display: "flex"
+            display: "flex",
+            [customTheme.breakpoints.down("md")]: {
+              display: "none",
+            }
           }
         },
         
@@ -76,16 +94,17 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
           
           '.email-btn': {
             display: "flex",
-            gap: "12px"
+            gap: "12px",
+
+            [customTheme.breakpoints.down("md")]: {
+              display: "grid",
+            }
           },
         },
 
         '.review-container': {
-          padding: "24px 5%",
+          padding: "24px 0",
           
-          '.image-container': {
-            borderRadius: "12px"
-          }
         },
 
         '.font-inter': {
@@ -123,36 +142,6 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
         '.color-grey': {
           color: customTheme.fontColors.primary00
         },
-
-        '@media(max-width: 900px)': {
-          '.header-alert': {
-            '.text-group': {
-              display: "grid",
-            },
-          },
-
-          '.header-menu': {
-            
-            '.auth-btn':{
-              display: "none"
-            },
-            
-            '.menu-btn':{
-              display: "block"
-            },
-
-            '.btn-group': {
-              display: "none"
-            }
-          },
-
-          '.blog-container': {
-            '.email-btn': {
-              display: "grid",
-              gap: "12px"
-            },
-          },
-        }
         
     }
   }
