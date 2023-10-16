@@ -1,15 +1,20 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 import { HeaderView } from "./Header";
 import { SliderView } from "./Slider";
 import { FooterView } from "./Footer";
 import { CarouselView } from "./Carousel";
+import { BlogModel } from "../../../models";
 
-export const HomeView: React.FC = () => {
+type HomeViewProps = BoxProps & {
+  blogs: BlogModel[];
+};
+
+export const HomeView: React.FC<HomeViewProps> = ({ blogs }) => {
   return (
     <Box>
-      <HeaderView />
-      <SliderView />
+      <HeaderView blogs={blogs} />
+      <SliderView blogs={blogs} />
       <CarouselView />
       <FooterView />
     </Box>

@@ -7,6 +7,7 @@ import {
   Pagination,
   PaginationItem,
   Divider,
+  BoxProps,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -23,7 +24,11 @@ import { BlogModel } from "../../../../models";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-export const HeaderView: React.FC = () => {
+type HeaderViewProps = BoxProps & {
+  blogs: BlogModel[];
+};
+
+export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
   return (
     <HeaderViewStyle>
       <Box className="header-alert">
@@ -90,16 +95,16 @@ export const HeaderView: React.FC = () => {
           </Box>
         </Box>
         <Box className="review-container">
-          <BlogComponent blog={BlogList[0]} />
+          {blogs.length > 0 && <BlogComponent blog={blogs[0]} />}
         </Box>
         <Grid container spacing={3}>
-          {BlogList.slice(1, BlogList.length).map(
-            (item: BlogModel, index: number) => (
+          {blogs
+            .slice(1, blogs.length)
+            .map((item: BlogModel, index: number) => (
               <Grid item lg={4} md={6} sm={12}>
                 <BlogComponent blog={item} />
               </Grid>
-            )
-          )}
+            ))}
         </Grid>
         <Box height={"64px"} />
         <Divider />
