@@ -46,14 +46,12 @@ export const SignUpView: React.FC = () => {
               icon={LockSvg}
               type="password"
             />
-            <ButtonComponent type={1} content="Login" />
-          </Box>
-          <Typography className="font-poppin font-size-16 text-center">
-            <strong>Login</strong> with Others
-          </Typography>
-          <Box className="login-container">
-            <ButtonComponent content={googleBtn} type={2} />
-            <ButtonComponent content={facebookBtn} type={2} />
+            <InputComponent
+              placeholder="Confirm password"
+              icon={LockSvg}
+              type="password"
+            />
+            <ButtonComponent type={1} content="Sign Up" />
           </Box>
         </Grid>
         <Grid item md={12} lg={6}>
