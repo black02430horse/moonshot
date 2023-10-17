@@ -3,7 +3,7 @@ import Box, { BoxProps } from "@mui/material/Box";
 import Button from "@mui/material/Button";
 type ButtonComponentProps = BoxProps & {
   content: string;
-  type?: boolean;
+  type?: number;
   icon?: any;
 };
 

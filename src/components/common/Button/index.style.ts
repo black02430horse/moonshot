@@ -2,7 +2,7 @@ import { StyledComponentProps, styled } from '@mui/material';
 
 import { CustomTheme } from '../../../style/types';
 
-type ButtonComponentStyleProps = StyledComponentProps & {type?: boolean} ;
+type ButtonComponentStyleProps = StyledComponentProps & {type?: number} ;
 
 export const ButtonComponentStyle = styled('div')<ButtonComponentStyleProps>(
   ({ theme, type}) => {
@@ -12,8 +12,9 @@ export const ButtonComponentStyle = styled('div')<ButtonComponentStyleProps>(
       fontWeight: customTheme.fontWeights.regular,
       fontSize: "16px",
       padding: "12px 18px" ,
-      backgroundColor: type ? customTheme.colors.secondary10 : customTheme.colors.white,
-      color: type ? customTheme.colors.white : customTheme.fontColors.primary00,
+      backgroundColor: type == 1 ? customTheme.colors.secondary10 : customTheme.colors.white,
+      color: type == 1 ? customTheme.colors.white : customTheme.fontColors.primary00,
+      border: type == 2 ? "1px solid #D0D5DD" : "none",
       borderRadius: "0.5rem",
       fontFamily: "Inter",
       cursor: "pointer",

@@ -7,5 +7,5 @@ import Png6 from "./6.png"
 import Png7 from "./7.png"
 
 export {
-  Png1, Png2, Png3, Png4, Png5, Png6, Png7, 
+  Png1, Png2, Png3, Png4, Png5, Png6, Png7
 }

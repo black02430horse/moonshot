@@ -3,43 +3,35 @@ import { StyledComponentProps, styled } from '@mui/material';
 import { CustomTheme } from '../../../../style/types';
 // import { Png1 } from '../../../../assets/image';
 
-type SliderViewStyleProps = StyledComponentProps & {} ;
+type CarouselViewStyleProps = StyledComponentProps & {} ;
 
-export const SliderViewStyle = styled('div')<SliderViewStyleProps>(
+export const CarouselViewStyle = styled('div')<CarouselViewStyleProps>(
   ({ theme }) => {
 
     const customTheme = theme as CustomTheme;
     return {
-        padding: "48px 5%",
+        padding: "0 5% 48px 5%",
         bgColor: "#F9FAFB",
-        // display: "grid",
-        // gap: "64px",
-
-        '.header': {
-          display: "flex",
-          justifyContent: "space-between",
-          marginBottom: "2rem",
-
-          '.header-btn': {
-            display: "block",
-            [customTheme.breakpoints.down("sm")]: {
-              display: "none",
-            }
-          }
+        display: "flex",
+        justifyContent: "space-between",
+        
+        [customTheme.breakpoints.down("md")]: {
+          display: "grid"
         },
 
-        '.card-array-container': {
-          width: '100%',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
+        ".head-container": {
+          display: "grid",
+          gap: "12px",
+        },
+
+        ".btn-group": {
           display: 'flex',
-        },
+          gap: "12px",
+          flexDirection: "row",
 
-        '.footer-btn': {
-          display: "none",
-          [customTheme.breakpoints.down("sm")]: {
-            display: "block",
-          }
+          [customTheme.breakpoints.down("md")]: {
+            flexDirection: "column-reverse"
+          },
         },
 
         '.font-inter': {

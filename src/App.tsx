@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages";
 
 function App() {
-  console.log(LightTheme);
   return (
     <ThemeProvider theme={LightTheme}>
       <BrowserRouter>
