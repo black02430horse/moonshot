@@ -4,6 +4,8 @@ import { Box } from "@mui/system";
 import { Grid, Typography } from "@mui/material";
 import { ButtonComponent, InputComponent } from "../../common";
 import { GoogleSvg, LockSvg, UserSvg, FacebookSvg } from "../../../assets/icon";
+import { PATH } from "../../../consts";
+import { Link } from "react-router-dom";
 
 export const LoginView: React.FC = () => {
   const googleBtn: any = (
@@ -46,7 +48,24 @@ export const LoginView: React.FC = () => {
               icon={LockSvg}
               type="password"
             />
-            <ButtonComponent type={1} content="Login" />
+            <Box>
+              <ButtonComponent type={1} content="Login" />
+              <Box
+                display={"flex"}
+                gap="12px"
+                marginTop={"8px"}
+                justifyContent={"center"}
+              >
+                <Typography className="font-poppin font-size-12 text-center">
+                  Create new account
+                </Typography>
+                <Link to={PATH.SignUp}>
+                  <Typography className="font-poppin font-size-12 text-center">
+                    Sign Up
+                  </Typography>
+                </Link>
+              </Box>
+            </Box>
           </Box>
           <Typography className="font-poppin font-size-16 text-center">
             <strong>Login</strong> with Others
