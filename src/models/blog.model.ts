@@ -1,7 +1,7 @@
 import { TipButtonModel } from "./button.model";
 
 export interface BlogModel{
-  img: any,
+  img: string,
   creator: string,
   title: string,
   content: string,
