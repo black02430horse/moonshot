@@ -1,18 +1,32 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { blogActions, blogReducer } from "./slices";
+import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { authActions, authReducer, blogActions, blogReducer, loadingActions, loadingReducer, themeActions, themeReducer } from "./slices";
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from "./sagas";
 
 const reducer = combineReducers({
-  blog: blogReducer
+  blog: blogReducer,
+  theme: themeReducer,
+  auth: authReducer,
+  loading: loadingReducer
 });
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   preloadedState: {},
   reducer,
-})
+  middleware: (getDefaultMiddleware: any) =>
+    getDefaultMiddleware({ serializableCheck: false, thunk: false }).concat(sagaMiddleware)
+});
 
 export const AppActions = {
-  blog: blogActions
+  blog: blogActions,
+  theme: themeActions,
+  auth: authActions,
+  loading: loadingActions
 }
+
+sagaMiddleware.run(rootSaga);
 
 export * as AppActionTypes from './types';
 

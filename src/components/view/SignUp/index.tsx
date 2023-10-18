@@ -1,13 +1,27 @@
 import React from "react";
 import { SignUpViewStyle } from "./index.style";
 import { Box } from "@mui/system";
-import { Grid, Typography } from "@mui/material";
+import { BoxProps, Grid, Typography } from "@mui/material";
 import { ButtonComponent, InputComponent } from "../../common";
 import { GoogleSvg, LockSvg, UserSvg, FacebookSvg } from "../../../assets/icon";
 import { PATH } from "../../../consts";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppActions, AppDispatch } from "../../../redux/store";
+import { UserModel } from "../../../models";
 
-export const SignUpView: React.FC = () => {
+type SignUpViewProps = BoxProps & {
+  userInfo: UserModel;
+  onClickSignUp: () => void;
+  onChange: (event: any) => void;
+};
+
+export const SignUpView: React.FC<SignUpViewProps> = ({
+  userInfo,
+  onClickSignUp,
+  onChange,
+}) => {
+  const dispatch = useDispatch<AppDispatch>();
   const googleBtn: any = (
     <Box display={"flex"} gap={"10px"} alignItems={"center"}>
       <img src={GoogleSvg} />
@@ -42,19 +56,44 @@ export const SignUpView: React.FC = () => {
             </Typography>
           </Box>
           <Box className="login-container">
-            <InputComponent placeholder="Username" icon={UserSvg} type="text" />
             <InputComponent
+              name="userName"
+              value={userInfo.userName}
+              onChange={onChange}
+              placeholder="Username"
+              icon={UserSvg}
+              type="text"
+            />
+            <InputComponent
+              name="userEmail"
+              value={userInfo.userEmail}
+              onChange={onChange}
+              placeholder="Email"
+              icon={UserSvg}
+              type="text"
+            />
+            <InputComponent
+              name="userPassword"
+              value={userInfo.userPassword}
+              onChange={onChange}
               placeholder="Password"
               icon={LockSvg}
               type="password"
             />
             <InputComponent
+              name="userConfirmPassword"
+              value={userInfo.userConfirmPassword}
+              onChange={onChange}
               placeholder="Confirm password"
               icon={LockSvg}
               type="password"
             />
             <Box>
-              <ButtonComponent type={1} content="Sign Up" />
+              <ButtonComponent
+                type={1}
+                content="Sign Up"
+                onClick={onClickSignUp}
+              />
               <Box
                 display={"flex"}
                 gap="12px"

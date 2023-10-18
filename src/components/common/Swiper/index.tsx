@@ -44,20 +44,24 @@ export const SwiperComponent: React.FC<SwiperComponentProps> = ({ slides }) => {
         className="mySwiper"
         loop={true}
       >
-        {slides.map((slide: BlogModel) => (
-          <SwiperSlide>{<BlogComponent blog={slide} />}</SwiperSlide>
+        {slides.map((slide: BlogModel, index: number) => (
+          <SwiperSlide key={index}>
+            {<BlogComponent blog={slide} />}
+          </SwiperSlide>
         ))}
-        {slides.map((slide: BlogModel) => (
-          <SwiperSlide>{<BlogComponent blog={slide} />}</SwiperSlide>
+        {slides.map((slide: BlogModel, index: number) => (
+          <SwiperSlide key={index * 2 + 1}>
+            {<BlogComponent blog={slide} />}
+          </SwiperSlide>
         ))}
       </Swiper>
       <Box className="btn-group">
         <SlideButtonComponent
-          icon={<ArrowBackIcon sx={{ color: "grey" }} />}
+          icon={<ArrowBackIcon sx={{ color: "#475467" }} />}
           type={1}
         />
         <SlideButtonComponent
-          icon={<ArrowForwardIcon sx={{ color: "grey" }} />}
+          icon={<ArrowForwardIcon sx={{ color: "#475467" }} />}
           type={1}
         />
       </Box>

@@ -20,6 +20,7 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
           padding: "8px",
           justifyContent: "space-between",
           color: customTheme.colors.white,
+          position: "sticky",
           
           
 
@@ -125,6 +126,10 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
 
         '.text-decoration-underline': {
           textDecoration: "underline"
+        },
+
+        '.text-decoration-none': {
+          textDecoration: "none"
         },
 
         '.color-secondary': {

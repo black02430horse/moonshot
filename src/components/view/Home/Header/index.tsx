@@ -18,17 +18,21 @@ import {
 import { Logo } from "../../../../assets/logo";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import MenuIcon from "@mui/icons-material/Menu";
-import { BlogList } from "../../../../consts";
+import { BlogList, PATH } from "../../../../consts";
 import { Grid3x3 } from "@mui/icons-material";
 import { BlogModel } from "../../../../models";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 type HeaderViewProps = BoxProps & {
   blogs: BlogModel[];
 };
 
 export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
+  const navigate = useNavigate();
+
   return (
     <HeaderViewStyle>
       <Box className="header-alert">
@@ -71,8 +75,12 @@ export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
             </Box>
           </Box>
           <Box className="auth-btn">
-            <ButtonComponent content="Log in" />
-            <ButtonComponent content="Sign up" type={1} />
+            <Link className="text-decoration-none" to={PATH.Login}>
+              <ButtonComponent content="Log in" />
+            </Link>
+            <Link className="text-decoration-none" to={PATH.SignUp}>
+              <ButtonComponent content="Sign up" type={1} />
+            </Link>
           </Box>
           <MenuIcon className="menu-btn" />
         </Box>
@@ -101,7 +109,7 @@ export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
           {blogs
             .slice(1, blogs.length)
             .map((item: BlogModel, index: number) => (
-              <Grid item lg={4} md={6} sm={12}>
+              <Grid item lg={4} md={6} sm={12} key={index}>
                 <BlogComponent blog={item} />
               </Grid>
             ))}

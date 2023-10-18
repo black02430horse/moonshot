@@ -14,9 +14,15 @@ export const CarouselViewStyle = styled('div')<CarouselViewStyleProps>(
         bgColor: "#F9FAFB",
         display: "flex",
         justifyContent: "space-between",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: "20px",
+
+
         
         [customTheme.breakpoints.down("md")]: {
-          display: "grid"
+          flexDirection: "column",
+          alignItems: "center"
         },
 
         ".head-container": {

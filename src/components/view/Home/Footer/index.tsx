@@ -52,14 +52,17 @@ export const FooterView: React.FC = () => {
         </Stack>
 
         <Grid container spacing={3}>
-          {footText.map((col) => (
-            <Grid item xs={6} sm={6} md={2.4}>
+          {footText.map((col, index) => (
+            <Grid item xs={6} sm={6} md={2.4} key={index}>
               <Stack gap={"12px"}>
-                <Typography className="footer-text-title font-inter">
+                <Typography key={0} className="footer-text-title font-inter">
                   {col[0]}
                 </Typography>
-                {col.slice(1, col.length - 1).map((item) => (
-                  <Typography className="font-inter color-olive">
+                {col.slice(1, col.length - 1).map((item, index) => (
+                  <Typography
+                    key={index + 1}
+                    className="font-inter color-olive"
+                  >
                     {item}
                   </Typography>
                 ))}
