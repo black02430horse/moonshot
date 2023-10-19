@@ -16,6 +16,7 @@ export const FooterViewStyle = styled("div")<FooterViewStyleProps>(
         padding: "5%",
         display: "flex",
         justifyContent: "space-between",
+        gap: "20px",
         [customTheme.breakpoints.down("md")]: {
           display: "grid",
         },
@@ -35,6 +36,7 @@ export const FooterViewStyle = styled("div")<FooterViewStyleProps>(
         padding: "2% 5%",
         display: "flex",
         justifyContent: "space-between",
+        gap: "20px",
 
         [customTheme.breakpoints.down("md")]: {
           display: "grid",

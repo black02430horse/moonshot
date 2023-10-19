@@ -25,8 +25,12 @@ export const BlogComponent: React.FC<BlogComponentProps> = (props) => {
       <Typography className="blog-title">{blog.title}</Typography>
       <Typography className="blog-content">{blog.content}</Typography>
       <Box className="tip-btn-group">
-        {blog.buttons.map((btn) => (
-          <TipButtonComponent content={btn.content} btnColor={btn.color} />
+        {blog.buttons.map((btn, index) => (
+          <TipButtonComponent
+            key={index}
+            content={btn.content}
+            btnColor={btn.color}
+          />
         ))}
       </Box>
     </BlogComponentStyle>

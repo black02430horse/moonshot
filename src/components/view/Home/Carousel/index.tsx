@@ -11,7 +11,8 @@ export const CarouselView: React.FC = () => {
       <Box display={"flex"} alignItems={"center"}>
         <Box className="head-container">
           <Typography className="font-inter font-size-36px font-regular">
-            Join 4,000+ startups growing with Untitled
+            Join 4,000+ startups <br />
+            growing with Untitled
           </Typography>
           <Typography className="font-inter color-grey font-size-16">
             Start your 30-day free trial today.

@@ -8,9 +8,9 @@ type ButtonComponentProps = BoxProps & {
 };
 
 export const ButtonComponent: React.FC<ButtonComponentProps> = (props) => {
-  const { content, type, icon } = props;
+  const { content, type, icon, ...rest } = props;
   return (
-    <ButtonComponentStyle type={type}>
+    <ButtonComponentStyle type={type} onClick={rest.onClick}>
       {content}
       {icon}
     </ButtonComponentStyle>
