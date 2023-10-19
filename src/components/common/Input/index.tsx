@@ -9,11 +9,21 @@ type InputComponentProps = BoxProps & {
   helper?: string;
   icon?: string;
   type?: string;
+  error?: string;
 };
 
 export const InputComponent: React.FC<InputComponentProps> = (props) => {
-  const { placeholder, width, helper, icon, type, value, name, onChange } =
-    props;
+  const {
+    placeholder,
+    width,
+    helper,
+    icon,
+    type,
+    value,
+    name,
+    onChange,
+    error,
+  } = props;
   return (
     <Box textAlign={"left"}>
       <InputComponentStyle width={width}>
@@ -34,6 +44,14 @@ export const InputComponent: React.FC<InputComponentProps> = (props) => {
         fontWeight={200}
       >
         {helper}
+      </Typography>
+      <Typography
+        fontFamily={"Poppins"}
+        color={"#DD4132"}
+        fontSize={"14px"}
+        fontWeight={200}
+      >
+        {error}
       </Typography>
     </Box>
   );

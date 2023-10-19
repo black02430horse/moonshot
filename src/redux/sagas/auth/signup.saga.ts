@@ -21,7 +21,7 @@ function* signUpRequestSaga(
     yield put(AppActions.loading.setLoading());
 
     const result: ResponseGenerator = yield call(async () => {
-      console.log(action.payload.userInfo);
+      // console.log(action.payload.userInfo);
       return await makeAPIRequst(`auth/signup`, "POST", action.payload.userInfo, false);
     });
     
