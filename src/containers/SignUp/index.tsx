@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { PATH } from "../../consts";
 import { useState, useEffect } from "react";
 import { UserModel } from "../../models";
+import { Box } from "@mui/material";
+import { SnackBarComponent } from "../../components/common";
+import { SnackbarProvider, VariantType, useSnackbar } from "notistack";
 
 export const SignUpContainer: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -19,13 +22,24 @@ export const SignUpContainer: React.FC = () => {
 
   const [userInfo, setUserInfo] = useState<UserModel>(initialState);
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const onChange = (event: any): void => {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
   };
 
   const onClickSignUp = (): void => {
     if (userInfo.userPassword !== userInfo.userConfirmPassword) {
-      alert("password must be same");
+      enqueueSnackbar("password must be same!", {
+        variant: "error",
+        autoHideDuration: 3000,
+        style: { fontFamily: "Poppins", borderRadius: "15px" },
+      });
+      setUserInfo({
+        ...userInfo,
+        userPassword: "",
+        userConfirmPassword: "",
+      });
       return;
     }
     dispatch(
@@ -33,13 +47,26 @@ export const SignUpContainer: React.FC = () => {
         userInfo: userInfo,
         next: () => {
           navigate(PATH.Login);
+          enqueueSnackbar("Signed up successfully!", {
+            variant: "success",
+            autoHideDuration: 3000,
+            style: { fontFamily: "Poppins", borderRadius: "12px" },
+          });
         },
         errorAction: (errorMsg) => {
-          alert(errorMsg);
+          errorMsg.map((item: string) => {
+            enqueueSnackbar(item, {
+              variant: "error",
+              autoHideDuration: 3000,
+              style: { fontFamily: "Poppins", borderRadius: "12px" },
+            });
+          });
+          setUserInfo(initialState);
         },
       })
     );
   };
+
   return (
     <SignUpView
       userInfo={userInfo}
