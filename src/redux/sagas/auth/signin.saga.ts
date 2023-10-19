@@ -14,19 +14,19 @@ interface ResponseGenerator {
   statusText?: string;
 }
 
-function* signUpRequestSaga(
-  action: PayloadAction<AppActionTypes.Auth.GetSignUpRequestAction>
+function* signInRequestSaga(
+  action: PayloadAction<AppActionTypes.Auth.GetSignInRequestAction>
 ) {
   try {
     yield put(AppActions.loading.setLoading());
 
     const result: ResponseGenerator = yield call(async () => {
       // console.log(action.payload.userInfo);
-      return await makeAPIRequst(`auth/sign-up`, "POST", action.payload.userInfo, false);
+      return await makeAPIRequst(`auth/sign-in`, "POST", action.payload.userInfo, true);
     });
     
     yield put(AppActions.loading.finishLoading());
-    // yield put(AppActions.auth.getMeRequestSuccess(result.data));
+    yield put(AppActions.auth.setToken(result.data.token));
     if (action.payload.next) {
       action.payload.next();
     }
@@ -47,5 +47,5 @@ function* signUpRequestSaga(
 }
 
 export default (function* () {
-  yield takeLatest("auth/signUpRequest", signUpRequestSaga);
+  yield takeLatest("auth/signInRequest", signInRequestSaga);
 })();

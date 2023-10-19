@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { PATH } from "../../consts";
 import { useState, useEffect } from "react";
 import { UserModel } from "../../models";
-import { Box } from "@mui/material";
-import { SnackBarComponent } from "../../components/common";
-import { SnackbarProvider, VariantType, useSnackbar } from "notistack";
+import { useSnackbar } from "notistack";
 
 export const SignUpContainer: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

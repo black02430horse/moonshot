@@ -8,6 +8,7 @@ import {
   PaginationItem,
   Divider,
   BoxProps,
+  Avatar,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import {
@@ -25,6 +26,8 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppActions, AppDispatch, RootState } from "../../../../redux/store";
 
 type HeaderViewProps = BoxProps & {
   blogs: BlogModel[];
@@ -32,6 +35,35 @@ type HeaderViewProps = BoxProps & {
 
 export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
   const navigate = useNavigate();
+
+  const user = useSelector((state: RootState) => state.auth.user);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const authMode = (
+    <Box
+      className="authed-btn"
+      onClick={() => {
+        dispatch(AppActions.auth.logOut());
+        dispatch(AppActions.auth.getMeRequest({}));
+      }}
+    >
+      <Avatar alt="Remy Sharp" src="/image/9.png" />
+      <Typography className="font-Inter font-regular color-grey">
+        {user?.userName}
+      </Typography>
+    </Box>
+  );
+
+  const guestMode = (
+    <Box className="auth-btn">
+      <Link className="text-decoration-none" to={PATH.Login}>
+        <ButtonComponent content="Log in" />
+      </Link>
+      <Link className="text-decoration-none" to={PATH.SignUp}>
+        <ButtonComponent content="Sign up" type={1} />
+      </Link>
+    </Box>
+  );
 
   return (
     <HeaderViewStyle>
@@ -74,14 +106,8 @@ export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
               <ButtonComponent content="Pricing" />
             </Box>
           </Box>
-          <Box className="auth-btn">
-            <Link className="text-decoration-none" to={PATH.Login}>
-              <ButtonComponent content="Log in" />
-            </Link>
-            <Link className="text-decoration-none" to={PATH.SignUp}>
-              <ButtonComponent content="Sign up" type={1} />
-            </Link>
-          </Box>
+          {user ? authMode : guestMode}
+
           <MenuIcon className="menu-btn" />
         </Box>
         <Box className="blog-container">

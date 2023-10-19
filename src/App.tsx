@@ -5,9 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage, LoginPage, SignUpPage } from "./pages";
 import { PATH } from "./consts";
 import { Provider, useSelector } from "react-redux";
-import { store, RootState } from "./redux/store";
+import { store, RootState, AppActions } from "./redux/store";
 import { boolean } from "yargs";
-import { SnackbarProvider, VariantType, useSnackbar } from "notistack";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   const theme = useSelector((state: RootState) => state.theme);

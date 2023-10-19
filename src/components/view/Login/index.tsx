@@ -1,13 +1,23 @@
 import React from "react";
 import { LoginViewStyle } from "./index.style";
-import { Box } from "@mui/system";
+import { Box, BoxProps } from "@mui/system";
 import { Grid, Typography } from "@mui/material";
 import { ButtonComponent, InputComponent } from "../../common";
 import { GoogleSvg, LockSvg, UserSvg, FacebookSvg } from "../../../assets/icon";
 import { PATH } from "../../../consts";
 import { Link } from "react-router-dom";
 
-export const LoginView: React.FC = () => {
+type LoginViewProps = {
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onLoginClick: () => void;
+  userInfo: { userEmail: string; userPassword: string };
+};
+
+export const LoginView: React.FC<LoginViewProps> = ({
+  onChange,
+  onLoginClick,
+  userInfo,
+}) => {
   const googleBtn: any = (
     <Box display={"flex"} gap={"10px"} alignItems={"center"}>
       <img src={GoogleSvg} />
@@ -42,14 +52,28 @@ export const LoginView: React.FC = () => {
             </Typography>
           </Box>
           <Box className="login-container">
-            <InputComponent placeholder="Username" icon={UserSvg} type="text" />
             <InputComponent
+              name="userEmail"
+              value={userInfo.userEmail}
+              onChange={onChange}
+              placeholder="Username"
+              icon={UserSvg}
+              type="text"
+            />
+            <InputComponent
+              name="userPassword"
+              value={userInfo.userPassword}
+              onChange={onChange}
               placeholder="Password"
               icon={LockSvg}
               type="password"
             />
             <Box>
-              <ButtonComponent type={1} content="Sign in" />
+              <ButtonComponent
+                type={1}
+                content="Sign in"
+                onClick={onLoginClick}
+              />
               <Box
                 display={"flex"}
                 gap="12px"
