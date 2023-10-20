@@ -9,7 +9,7 @@ type AuthState = {
 }
 
 const initialState: AuthState = {
-  token: null,
+  token: localStorage.getItem("token"),
   user: null
 }
 
@@ -20,7 +20,40 @@ const initialSlice = createSlice({
     signUpRequest(
       state: AuthState,
       action: PayloadAction <AppActionTypes.Auth.GetSignUpRequestAction>
-    ){ }
+    ){ },
+
+    signInRequest(
+      state: AuthState,
+      action: PayloadAction <AppActionTypes.Auth.GetSignInRequestAction>
+    ){ },
+
+    setToken(
+      state: AuthState,
+      action: PayloadAction<string>
+    ){ 
+      state.token = action.payload;
+      localStorage.setItem("token", action.payload);
+    },
+
+    logOut(
+      state: AuthState
+    ){
+      localStorage.removeItem("token");
+      state.user = null;
+    },
+
+    getMeRequest(
+      state: AuthState,
+      action: PayloadAction<IAction>
+    ) { },
+
+    getMeRequestSuccess(
+      state: AuthState,
+      action: PayloadAction<UserModel>
+    ){
+      console.log("got me!");
+      state.user = action.payload;
+    }
   }
 })
 

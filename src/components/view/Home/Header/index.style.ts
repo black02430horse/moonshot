@@ -56,9 +56,23 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
           
           '.auth-btn': {
             display: "flex",
+            alignItems: "center",
+            gap: "5px",
+            justifyContent: "center",
             [customTheme.breakpoints.down("md")]: {
               display: "none"
-            }
+            },
+          },
+
+          '.authed-btn': {
+            display: "flex",
+            alignItems: "center",
+            cursor: "pointer",
+            gap: "5px",
+            justifyContent: "center",
+            [customTheme.breakpoints.down("md")]: {
+              display: "none"
+            },
           },
           
           '.menu-btn': {
