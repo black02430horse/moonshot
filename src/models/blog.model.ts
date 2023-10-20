@@ -6,4 +6,5 @@ export interface BlogModel{
   title: string,
   content: string,
   buttons: {content: string, color: TipButtonModel}[]
+  // buttons: string
 }

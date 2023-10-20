@@ -12,7 +12,7 @@ export const BlogComponent: React.FC<BlogComponentProps> = (props) => {
   const { blog } = props;
   return (
     <BlogComponentStyle>
-      <img src={blog.img} className="blog-image" />
+      <img src={`/image/${blog.img}.png`} className="blog-image" />
       <Box
         display={"flex"}
         justifyContent={"space-between"}

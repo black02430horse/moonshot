@@ -30,7 +30,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppActions, AppDispatch, RootState } from "../../../../redux/store";
 
 type HeaderViewProps = BoxProps & {
-  blogs: BlogModel[];
+  blogs: BlogModel[] | undefined;
 };
 
 export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
@@ -129,16 +129,17 @@ export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
           </Box>
         </Box>
         <Box className="review-container">
-          {blogs.length > 0 && <BlogComponent blog={blogs[0]} />}
+          {blogs && blogs.length > 0 && <BlogComponent blog={blogs[0]} />}
         </Box>
         <Grid container spacing={3}>
-          {blogs
-            .slice(1, blogs.length)
-            .map((item: BlogModel, index: number) => (
-              <Grid item lg={4} md={6} sm={12} key={index}>
-                <BlogComponent blog={item} />
-              </Grid>
-            ))}
+          {blogs &&
+            blogs
+              .slice(1, blogs.length)
+              .map((item: BlogModel, index: number) => (
+                <Grid item lg={4} md={6} sm={12} key={index}>
+                  <BlogComponent blog={item} />
+                </Grid>
+              ))}
         </Grid>
         <Box height={"64px"} />
         <Divider />

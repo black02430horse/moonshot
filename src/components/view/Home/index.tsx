@@ -7,7 +7,7 @@ import { CarouselView } from "./Carousel";
 import { BlogModel } from "../../../models";
 
 type HomeViewProps = BoxProps & {
-  blogs: BlogModel[];
+  blogs: BlogModel[] | undefined;
 };
 
 export const HomeView: React.FC<HomeViewProps> = ({ blogs }) => {
