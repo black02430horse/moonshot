@@ -7,7 +7,7 @@ import { BlogList } from "../../../../consts";
 import { BlogModel } from "../../../../models";
 
 type SliderViewProps = BoxProps & {
-  blogs: BlogModel[];
+  blogs: BlogModel[] | undefined;
 };
 
 export const SliderView: React.FC<SliderViewProps> = ({ blogs }) => {
@@ -26,7 +26,7 @@ export const SliderView: React.FC<SliderViewProps> = ({ blogs }) => {
           <ButtonComponent content="View all posts" type={1} />
         </Box>
       </Box>
-      <SwiperComponent slides={blogs.slice(1, blogs.length - 1)} />
+      {blogs && <SwiperComponent slides={blogs.slice(1, blogs.length - 1)} />}
       <Box className="footer-btn">
         <ButtonComponent content="View all posts" type={1} />
       </Box>

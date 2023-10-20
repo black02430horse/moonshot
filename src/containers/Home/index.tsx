@@ -12,7 +12,7 @@ export const HomeContainer: React.FC = () => {
   const { blogs } = useSelector((state: RootState) => state.blog);
 
   useEffect(() => {
-    dispatch(AppActions.blog.setBlog({}));
+    dispatch(AppActions.blog.getBlogRequest({}));
   }, []);
 
   return <HomeView blogs={blogs} />;

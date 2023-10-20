@@ -1,10 +1,9 @@
-import { Png1, Png2, Png3, Png4, Png5, Png6, Png7 } from "../assets/image";
 import { BlogModel } from "../models";
 import { blueBtn, carBtn, greenBtn, navyBtn, orangeBtn, pinkBtn, purpleBtn } from "./button.color";
 
 export const BlogList: BlogModel[] = [
   {
-    img: Png1,
+    img: "1",
     creator: "Olivia Rhye - 20 Jan 2024",
     title: "UX review presentations",
     content:
@@ -17,7 +16,7 @@ export const BlogList: BlogModel[] = [
   },
   
   {
-    img: Png2,
+    img: "2",
     creator: "Phoenix Baker • 19 Jan 2024",
     title: "Migrating to Linear 101",
     content:
@@ -30,7 +29,7 @@ export const BlogList: BlogModel[] = [
   },
 
   {
-    img: Png3,
+    img: "3",
     creator: "Lana Steiner • 18 Jan 2024",
     title: "Building your API stack",
     content:
@@ -42,7 +41,7 @@ export const BlogList: BlogModel[] = [
   },
 
   {
-    img: Png4,
+    img: "4",
     creator: "Alec Whitten • 17 Jan 2024",
     title: "Bill Walsh leadership lessons",
     content:
@@ -54,7 +53,7 @@ export const BlogList: BlogModel[] = [
   },
 
   {
-    img: Png5,
+    img: "5",
     creator: "Demi WIlkinson • 16 Jan 2024",
     title: "PM mental models",
     content:
@@ -67,7 +66,7 @@ export const BlogList: BlogModel[] = [
   },
 
   {
-    img: Png6,
+    img: "6",
     creator: "Candice Wu • 15 Jan 2024",
     title: "What is wireframing?",
     content:
@@ -79,7 +78,7 @@ export const BlogList: BlogModel[] = [
   },
 
   {
-    img: Png7,
+    img: "7",
     creator: "Natali Craig • 14 Jan 2024",
     title: "How collaboration makes us better designers",
     content:

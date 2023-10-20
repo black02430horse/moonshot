@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppActionTypes } from "../store";
 
 type BlogState = {
-  blogs: BlogModel[]
+  blogs: BlogModel[] | undefined
 }
 
 const initialState: BlogState = {
@@ -15,11 +15,18 @@ const initialSlice = createSlice({
   name: "blog",
   initialState: initialState,
   reducers: {
-    setBlog(
+    getBlogRequestSuccess(
       state: BlogState,
-      action: PayloadAction<AppActionTypes.Blog.IGetBlogsRequest>
+      action: PayloadAction<AppActionTypes.Blog.GetBlogsRequest>
     ){
-      state.blogs = [...BlogList];
+      state.blogs = action.payload.blogs;
+    },
+
+    getBlogRequest (
+      state: BlogState,
+      action: PayloadAction<AppActionTypes.Blog.GetBlogsRequest>
+    ) {
+
     }
   }
 })
