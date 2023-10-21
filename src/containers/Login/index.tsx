@@ -6,6 +6,7 @@ import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router";
 import { PATH } from "../../consts";
 import { UserModel } from "../../models";
+import { Variant } from "@testing-library/react";
 
 export const LoginContainer: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -25,6 +26,14 @@ export const LoginContainer: React.FC = () => {
     userPassword: string;
   }>(initialState);
 
+  const displaySnack = (variant: any, content: string) => {
+    enqueueSnackbar(content, {
+      variant: variant,
+      autoHideDuration: 3000,
+      style: { fontFamily: "Poppins", borderRadius: "12px" },
+    });
+  };
+
   const onLoginClick = () => {
     dispatch(
       AppActions.auth.signInRequest({
@@ -32,11 +41,7 @@ export const LoginContainer: React.FC = () => {
         errorAction: (errorMsg) => {
           if (typeof errorMsg === "string") errorMsg = [errorMsg];
           errorMsg.map((item: string) => {
-            enqueueSnackbar(item, {
-              variant: "error",
-              autoHideDuration: 3000,
-              style: { fontFamily: "Poppins", borderRadius: "12px" },
-            });
+            displaySnack("error", item);
           });
           setUserInfo(initialState);
         },
@@ -44,11 +49,10 @@ export const LoginContainer: React.FC = () => {
           dispatch(
             AppActions.auth.getMeRequest({
               next: () => {
-                enqueueSnackbar(`${user?.userName} signed in successfully.`, {
-                  variant: "success",
-                  autoHideDuration: 3000,
-                  style: { fontFamily: "Poppins", borderRadius: "12px" },
-                });
+                displaySnack(
+                  "success",
+                  `${user?.userName} signed in successfully.`
+                );
                 navigate(PATH.Home);
               },
             })
@@ -58,7 +62,9 @@ export const LoginContainer: React.FC = () => {
     );
   };
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
   };
 

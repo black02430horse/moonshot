@@ -25,7 +25,7 @@ function* getMeRequestSaga( action: PayloadAction<IAction> ) {
     yield put(AppActions.loading.finishLoading());
     yield put(AppActions.auth.getMeRequestSuccess(result.data.user));
     if (action.payload.next) {
-      action.payload.next();
+      yield (action.payload.next());
     }
   } catch (error: unknown) {
     yield put(AppActions.loading.finishLoading());

@@ -8,7 +8,9 @@ import { PATH } from "../../../consts";
 import { Link } from "react-router-dom";
 
 type LoginViewProps = {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   onLoginClick: () => void;
   userInfo: { userEmail: string; userPassword: string };
 };
