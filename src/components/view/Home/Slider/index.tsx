@@ -26,7 +26,7 @@ export const SliderView: React.FC<SliderViewProps> = ({ blogs }) => {
           <ButtonComponent content="View all posts" type={1} />
         </Box>
       </Box>
-      {blogs && <SwiperComponent slides={blogs.slice(1, blogs.length - 1)} />}
+      {blogs && <SwiperComponent slides={blogs.slice(1, blogs.length)} />}
       <Box className="footer-btn">
         <ButtonComponent content="View all posts" type={1} />
       </Box>

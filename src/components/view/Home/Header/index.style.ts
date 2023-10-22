@@ -20,7 +20,7 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
           padding: "8px",
           justifyContent: "space-between",
           color: customTheme.colors.white,
-          position: "sticky",
+          
           
           
 
@@ -53,6 +53,10 @@ export const HeaderViewStyle = styled('div')<HeaderViewStyleProps>(
           justifyContent: "space-between",
           alignItems: "center",
           padding: "18px 0",
+          backgroundColor: "#ffffff",
+          position: "sticky",
+          top: "0",
+          boxShadow: "12px",
           
           '.auth-btn': {
             display: "flex",

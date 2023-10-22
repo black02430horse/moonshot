@@ -9,19 +9,21 @@ import {
   Divider,
   BoxProps,
   Avatar,
+  SelectChangeEvent,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   BlogComponent,
   ButtonComponent,
   InputComponent,
+  ModalComponent,
 } from "../../../common";
 import { Logo } from "../../../../assets/logo";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import { BlogList, PATH } from "../../../../consts";
 import { Grid3x3 } from "@mui/icons-material";
-import { BlogModel } from "../../../../models";
+import { BlogModel, ModalModel } from "../../../../models";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router";
@@ -31,13 +33,29 @@ import { AppActions, AppDispatch, RootState } from "../../../../redux/store";
 
 type HeaderViewProps = BoxProps & {
   blogs: BlogModel[] | undefined;
+  modalState: ModalModel;
+  setModalState: (state: ModalModel) => void;
 };
 
-export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
+export const HeaderView: React.FC<HeaderViewProps> = ({
+  blogs,
+  modalState,
+  setModalState,
+}) => {
   const navigate = useNavigate();
 
   const user = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch<AppDispatch>();
+
+  const initialModalState: ModalModel = {
+    img: "",
+    open: false,
+    creator: "",
+    title: "",
+    content: "",
+    buttons: [],
+    isOk: false,
+  };
 
   const authMode = (
     <Box
@@ -103,7 +121,14 @@ export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
                 content="Resources"
                 icon={<ArrowDropDownIcon />}
               />
-              <ButtonComponent content="Pricing" />
+              {user && (
+                <ButtonComponent
+                  content="Manage Blogs"
+                  onClick={() =>
+                    setModalState({ ...initialModalState, open: true })
+                  }
+                />
+              )}
             </Box>
           </Box>
           {user ? authMode : guestMode}
@@ -169,6 +194,7 @@ export const HeaderView: React.FC<HeaderViewProps> = ({ blogs }) => {
           </Box>
         </Box>
       </Box>
+      <ModalComponent modalState={modalState} setModalState={setModalState} />
     </HeaderViewStyle>
   );
 };

@@ -13,11 +13,17 @@ export const InputComponentStyle = styled('div')<InputComponentStyleProps>(
     return {
       fontWeight: customTheme.fontWeights.regular,
       fontSize: "12px",
-      padding: "10px 14px" ,
+      padding: "5px 8px" ,
       borderRadius: "8px",
       border: "1px solid #D0D5DD",
       fontFamily: "Inter",
       display: "flex",
+      ':hover': {
+        border: "1px solid #000000"
+      },
+      ':focus-within': {
+        border: "2px solid #1976d2"
+      },
       // width: "max-content",
 
       '.input': {

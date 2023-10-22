@@ -1,9 +1,12 @@
 import { InputComponentStyle } from "./index.style";
-import { Box, BoxProps, InputBase, Typography } from "@mui/material";
-type InputComponentProps = BoxProps & {
+import { Box, InputBase, InputProps, Typography } from "@mui/material";
+
+type InputComponentProps = InputProps & {
   placeholder?: string;
   name?: string;
-  onChange?: (event: any) => void;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   value?: string;
   width?: number;
   helper?: string;
@@ -23,6 +26,7 @@ export const InputComponent: React.FC<InputComponentProps> = (props) => {
     name,
     onChange,
     error,
+    multiline,
   } = props;
   return (
     <Box textAlign={"left"}>
@@ -35,6 +39,7 @@ export const InputComponent: React.FC<InputComponentProps> = (props) => {
           onChange={onChange}
           className="input"
           type={type}
+          multiline={multiline}
         />
       </InputComponentStyle>
       <Typography

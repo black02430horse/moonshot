@@ -54,6 +54,16 @@ export const SwiperComponent: React.FC<SwiperComponentProps> = ({ slides }) => {
             {<BlogComponent blog={slide} />}
           </SwiperSlide>
         ))}
+        {slides.map((slide: BlogModel, index: number) => (
+          <SwiperSlide key={index * 2 + 1}>
+            {<BlogComponent blog={slide} />}
+          </SwiperSlide>
+        ))}
+        {slides.map((slide: BlogModel, index: number) => (
+          <SwiperSlide key={index * 2 + 1}>
+            {<BlogComponent blog={slide} />}
+          </SwiperSlide>
+        ))}
       </Swiper>
       <Box className="btn-group">
         <SlideButtonComponent
