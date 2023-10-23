@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import { TipButtonModel } from "../../../models/button.model";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { Key } from "react";
-type TipButtonComponentProps = BoxProps & {
+type TipButtonComponentProps = {
   content: string;
   btnColor: TipButtonModel;
   type?: number;

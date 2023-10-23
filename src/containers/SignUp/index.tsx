@@ -26,6 +26,15 @@ export const SignUpContainer: React.FC = () => {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
   };
 
+  const displaySnack = (variant: any, content: string) => {
+    enqueueSnackbar(content, {
+      variant: variant,
+      autoHideDuration: 3000,
+      style: { fontFamily: "Poppins", borderRadius: "12px" },
+    });
+  };
+
+
   const onClickSignUp = (): void => {
     if (userInfo.userPassword !== userInfo.userConfirmPassword) {
       enqueueSnackbar("password must be same!", {

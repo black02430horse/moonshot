@@ -15,10 +15,12 @@ interface ResponseGenerator {
   statusText?: string;
 }
 
-function* createBlogRequestSaga( action: PayloadAction<AppActionTypes.Blog.CreateBlogsRequest> ) {
+function* editBlogRequestSaga( action: PayloadAction<AppActionTypes.Blog.EditBlogsRequest> ) {
   // console.log("hey");
   try {
     yield put(AppActions.loading.setLoading());
+
+    
 
     const result: ResponseGenerator = yield call(async () => {
       const formData = new FormData();
@@ -28,13 +30,15 @@ function* createBlogRequestSaga( action: PayloadAction<AppActionTypes.Blog.Creat
       formData.append("title", title);
       formData.append("content", content);
       formData.append("buttons", buttons);
-      return await makeAPIRequst(`blog/create-blog`, "POST", formData, true);
+      return await makeAPIRequst(`blog/edit-blog/${action.payload.id}`, "POST", formData, true);
     });
     
     yield put(AppActions.loading.finishLoading());
 
     const blog = result.data.blog;
-    yield put(AppActions.blog.createBlogRequestSuccess({blog}));
+    // console.log("newBlog", blog);
+
+    yield put(AppActions.blog.editBlogRequestSuccess({blog}));
     if (action.payload.next) {
       action.payload.next();
     }
@@ -55,5 +59,5 @@ function* createBlogRequestSaga( action: PayloadAction<AppActionTypes.Blog.Creat
 }
 
 export default (function* () {
-  yield takeLatest("blog/createBlogRequest", createBlogRequestSaga);
+  yield takeLatest("blog/editBlogRequest", editBlogRequestSaga);
 })();

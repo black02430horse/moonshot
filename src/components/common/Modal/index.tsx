@@ -39,9 +39,9 @@ export const ModalComponent: React.FC<ModalComponentProps> = ({
 }) => {
   const handleClose = (isOk: boolean) => {
     setModalState(
-      isOk
-        ? { ...state, open: false, isOk: true }
-        : { ...modalState, open: false }
+      !isOk
+        ? { ...modalState, open: false }
+        : { ...state, open: false, isOk: true }
     );
   };
 
@@ -55,6 +55,7 @@ export const ModalComponent: React.FC<ModalComponentProps> = ({
 
   const [color, setColor] = React.useState<string>("");
   const [buttonName, setButtonName] = React.useState<string>("");
+  const [file, setFile] = React.useState<File | null>(null);
 
   const onColorChange = (event: SelectChangeEvent<string>) => {
     setColor(event.target.value);
@@ -84,7 +85,13 @@ export const ModalComponent: React.FC<ModalComponentProps> = ({
     setButtonName("");
   };
 
+  const onFileChange = (event: any) => {
+    if (event.target.files)
+      setState({ ...state, file: event.target?.files[0] });
+  };
+
   const onCloseTipBtn = (id: number) => {
+    // console.log(id);
     setState({
       ...state,
       buttons: state.buttons.filter((item, index: number) => index != id),
@@ -116,20 +123,34 @@ export const ModalComponent: React.FC<ModalComponentProps> = ({
               image:
             </Grid>
             <Grid item xs={10}>
-              <InputComponent name="img" onChange={onChange} />
+              <InputComponent
+                type="file"
+                name="img"
+                // value={state.img}
+                onChange={onFileChange}
+              />
             </Grid>
             <Grid sx={titleStyle} item xs={2}>
               creator:
             </Grid>
             <Grid item xs={10}>
-              <InputComponent name="creator" onChange={onChange} />
+              <InputComponent
+                name="creator"
+                type="text"
+                value={state.creator}
+                onChange={onChange}
+              />
             </Grid>
 
             <Grid sx={titleStyle} item xs={2}>
               title:
             </Grid>
             <Grid item xs={10}>
-              <InputComponent name="title" onChange={onChange} />
+              <InputComponent
+                name="title"
+                value={state.title}
+                onChange={onChange}
+              />
             </Grid>
 
             <Grid sx={titleStyle} item xs={2}>
@@ -137,6 +158,7 @@ export const ModalComponent: React.FC<ModalComponentProps> = ({
             </Grid>
             <Grid item xs={10}>
               <InputComponent
+                value={state.content}
                 name="content"
                 multiline={true}
                 onChange={onChange}
@@ -170,6 +192,7 @@ export const ModalComponent: React.FC<ModalComponentProps> = ({
                         btnColor={item.color}
                         key={index}
                         type={1}
+                        id={index}
                         onCloseTipBtn={onCloseTipBtn}
                       />
                     ))

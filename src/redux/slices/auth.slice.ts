@@ -51,7 +51,7 @@ const initialSlice = createSlice({
       state: AuthState,
       action: PayloadAction<UserModel>
     ){
-      console.log("got me!");
+      // console.log("got me!");
       state.user = action.payload;
     }
   }
