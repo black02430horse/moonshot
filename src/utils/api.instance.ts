@@ -6,7 +6,7 @@ export async function makeAPIRequst(
   url: string,
   method: ApiMethod = "GET",
   body: any = {},
-  isTokenIncluded: boolean = true
+  isTokenIncluded: boolean = true,
 ): Promise<any> {
   let headers: {
     Authorization?: string;

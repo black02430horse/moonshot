@@ -15,26 +15,19 @@ interface ResponseGenerator {
   statusText?: string;
 }
 
-function* createBlogRequestSaga( action: PayloadAction<AppActionTypes.Blog.CreateBlogsRequest> ) {
-  // console.log("hey");
+function* deleteBlogRequestSaga( action: PayloadAction<AppActionTypes.Blog.DeleteBlogsRequest> ) {
+  console.log("hey");
   try {
     yield put(AppActions.loading.setLoading());
 
     const result: ResponseGenerator = yield call(async () => {
-      const formData = new FormData();
-      if(action.payload.file)formData.append("file", action.payload.file);
-      const {creator, title, content, buttons, id} = action.payload.blog;
-      formData.append("creator", creator);
-      formData.append("title", title);
-      formData.append("content", content);
-      formData.append("buttons", buttons);
-      return await makeAPIRequst(`blog/create-blog`, "POST", formData, true);
+      return await makeAPIRequst(`blog/${action.payload.id}`, "DELETE", {}, true);
     });
     
     yield put(AppActions.loading.finishLoading());
 
-    const blog = result.data.blog;
-    yield put(AppActions.blog.createBlogRequestSuccess({blog}));
+    const id = result.data.id;
+    yield put(AppActions.blog.deleteBlogRequestSuccess({id}));
     if (action.payload.next) {
       action.payload.next();
     }
@@ -55,5 +48,5 @@ function* createBlogRequestSaga( action: PayloadAction<AppActionTypes.Blog.Creat
 }
 
 export default (function* () {
-  yield takeLatest("blog/createBlogRequest", createBlogRequestSaga);
+  yield takeLatest("blog/deleteBlogRequest", deleteBlogRequestSaga);
 })();

@@ -6,5 +6,16 @@ export type GetBlogsRequest = IAction & {
 };
 
 export type CreateBlogsRequest = IAction & {
-  blog: AxiosBlogModel
+  blog: AxiosBlogModel,
+  file?: File
+};
+
+export type EditBlogsRequest = IAction & {
+  blog: AxiosBlogModel,
+  file?: File,
+  id: number
+};
+
+export type DeleteBlogsRequest = IAction & {
+  id: number
 };

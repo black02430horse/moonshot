@@ -19,7 +19,7 @@ const initialSlice = createSlice({
       state: BlogState,
       action: PayloadAction<AppActionTypes.Blog.GetBlogsRequest>
     ){
-      state.blogs = action.payload.blogs ?? state.blogs ;
+      state.blogs = action.payload.blogs?.filter((item) => item.deletedAt == null) ?? state.blogs ;
     },
 
     getBlogRequest (
@@ -40,9 +40,41 @@ const initialSlice = createSlice({
       state: BlogState,
       action: PayloadAction<AppActionTypes.Blog.CreateBlogsRequest>
     ) {
+
       const newBlog = {...action.payload.blog, buttons: JSON.parse(action.payload.blog.buttons)};
       state.blogs = [...state.blogs, newBlog];
+    },
+
+    editBlogRequest (
+      state: BlogState,
+      action: PayloadAction<AppActionTypes.Blog.EditBlogsRequest>
+    ) {
+    },
+
+    editBlogRequestSuccess (
+      state: BlogState,
+      action: PayloadAction<AppActionTypes.Blog.CreateBlogsRequest>
+    ) {
+      const newBlog = {...action.payload.blog, buttons: JSON.parse(action.payload.blog.buttons)};
+      const tempBlogs = state.blogs.filter((blog:BlogModel) => blog.id != newBlog.id);
+      state.blogs = [...tempBlogs, newBlog];
+    },
+    
+    deleteBlogRequest (
+      state: BlogState,
+      action: PayloadAction<AppActionTypes.Blog.DeleteBlogsRequest>
+    ) {
+      // console.log("saga");
+    },
+
+    deleteBlogRequestSuccess (
+      state: BlogState,
+      action: PayloadAction<AppActionTypes.Blog.DeleteBlogsRequest>
+    ){
+      const tempBlogs = state.blogs.filter((blog:BlogModel) => blog.id != action.payload.id);
+      state.blogs = tempBlogs;
     }
+
   }
 })
 

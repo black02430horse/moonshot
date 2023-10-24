@@ -35,12 +35,16 @@ type HeaderViewProps = BoxProps & {
   blogs: BlogModel[] | undefined;
   modalState: ModalModel;
   setModalState: (state: ModalModel) => void;
+  onEditBlog: (index: number) => void;
+  onDeleteBlog: (index: number) => void;
 };
 
 export const HeaderView: React.FC<HeaderViewProps> = ({
   blogs,
   modalState,
   setModalState,
+  onEditBlog,
+  onDeleteBlog,
 }) => {
   const navigate = useNavigate();
 
@@ -55,6 +59,7 @@ export const HeaderView: React.FC<HeaderViewProps> = ({
     content: "",
     buttons: [],
     isOk: false,
+    id: -1,
   };
 
   const authMode = (
@@ -158,13 +163,16 @@ export const HeaderView: React.FC<HeaderViewProps> = ({
         </Box>
         <Grid container spacing={3}>
           {blogs &&
-            blogs
-              .slice(1, blogs.length)
-              .map((item: BlogModel, index: number) => (
-                <Grid item lg={4} md={6} sm={12} key={index}>
-                  <BlogComponent blog={item} />
-                </Grid>
-              ))}
+            blogs.map((item: BlogModel, index: number) => (
+              <Grid item lg={4} md={6} sm={12} key={index}>
+                <BlogComponent
+                  blog={item}
+                  index={index}
+                  onEditBlog={onEditBlog}
+                  onDeleteBlog={onDeleteBlog}
+                />
+              </Grid>
+            ))}
         </Grid>
         <Box height={"64px"} />
         <Divider />

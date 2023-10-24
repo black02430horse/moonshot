@@ -29,6 +29,12 @@ export const BlogComponentStyle = styled('div')<BlogComponentStyleProps>(
         fontFamily: customTheme.fonts.mainFont,
       fontWeight: customTheme.fontWeights.regular,
       },
+      '.blog-btn-broup': {
+        display: "flex",
+        gap: "5px",
+        cursor: "pointer",
+        
+      },
 
       '.blog-content': {
         fontSize: "14px",
